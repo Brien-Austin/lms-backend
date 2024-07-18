@@ -29,9 +29,24 @@ const courseSchema = new mongoose.Schema({
     Chapters :[
         chapter
       
-    ]
+    ],
+
+    createdAt : {
+        type : Date ,
+        default : Date.now()
+    },
+    updatedAt : {
+        type : Date ,
+        default : Date.now()
+    },
 
 
+
+})
+
+courseSchema.pre('save', function(next){
+    this.updatedAt = new Date();
+    next();
 })
 
 module.exports = mongoose.model('Course', courseSchema) || mongoose.models.Course

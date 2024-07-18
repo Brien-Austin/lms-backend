@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const chapterSchema = new mongoose.Schema({
 
@@ -19,6 +20,11 @@ const chapterSchema = new mongoose.Schema({
     isFree : {
         type : Boolean,
         required : true,
+    },
+    courseId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Course',
+        required: true,
     }
 
 })
